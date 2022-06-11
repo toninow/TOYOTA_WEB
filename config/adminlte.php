@@ -251,7 +251,7 @@ return [
         [
             'icon_color' => 'red',
             'text' => 'Inicio',
-            'route'  => 'dashboard',
+            'url'  => 'dashboard/inicios',
         ],
         [
             'icon_color' => 'red',

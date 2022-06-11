@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InicioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +18,25 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//TOKEN - Administrador - validador de Rutas
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard/inicio', function () {
-        return view('dashboard.inicio.index');
+    Route::get('/dashboard/inicios', function () {
+        return view('dashboard.inicios.index');
     })->name('dashboard');
+    Route::get('/dashboard/vehiculos', function () {
+        return view('dashboard.vehiculos.index');
+    });
+
+    Route::get('/profile', function () {
+        return view('profile.show');
+    });
+
+    Route::resource('/dashboard/inicios', InicioController::class);
 });
 
-Route::get('/dashboard/vehiculos', function () {
-    return view('dashboard.vehiculos.index');
-});
 
-Route::get('/profile', function () {
-    return view('profile.show');
-});
 
